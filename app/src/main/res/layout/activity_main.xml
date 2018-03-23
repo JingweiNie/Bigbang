@@ -11,12 +11,12 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10">
+        android:layout_weight="11">
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#9E9E9E"/>
+        android:background="@color/divideline"/>
     <include layout="@layout/tab"
         android:layout_height="0dp"
         android:layout_width="match_parent"

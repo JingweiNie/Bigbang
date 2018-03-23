@@ -17,13 +17,16 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:adjustViewBounds="false"
-            android:padding="5dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:paddingTop="8dp"
             app:srcCompat="@drawable/task_unselected" />
 
         <TextView
             android:id="@+id/tab_1_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="求助" />
@@ -40,13 +43,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:padding="5dp"
+            android:paddingTop="5dp"
             app:srcCompat="@drawable/secondhand_market_unselected" />
 
         <TextView
             android:id="@+id/tab_2_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="市场" />
@@ -63,13 +67,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:padding="8dp"
+            android:paddingBottom="1dp"
+            android:paddingTop="10dp"
             app:srcCompat="@drawable/publish_unselected" />
 
         <TextView
             android:id="@+id/tab_3_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="发布" />
@@ -86,13 +92,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:padding="7dp"
+            android:paddingTop="8dp"
             app:srcCompat="@drawable/user_unselected" />
 
         <TextView
             android:id="@+id/tab_4_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="用户" />

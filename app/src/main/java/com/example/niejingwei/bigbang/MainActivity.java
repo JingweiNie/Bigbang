@@ -3,6 +3,7 @@ package com.example.niejingwei.bigbang;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import fragments.MarketFragment;
+import fragments.PublishFragment;
 import fragments.TaskFragment;
+import fragments.UserFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private LinearLayout tab_1=null;
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tab_2.setOnClickListener(this);
         tab_3.setOnClickListener(this);
         tab_4.setOnClickListener(this);
+        switchTab(1);
     }
 
     @Override
@@ -73,14 +78,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     //负责切换不同tab时的样式变换
     private void switchTab(int index){
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        if(fragment_1==null)
+        {
+            fragment_1=new TaskFragment();
+            fragmentTransaction.add(R.id.fragment_container,fragment_1,"task");
+        }
+        if(fragment_2==null)
+        {
+            fragment_2=new MarketFragment();
+            fragmentTransaction.add(R.id.fragment_container,fragment_2,"market");
+        }
+        if(fragment_3==null)
+        {
+            fragment_3=new PublishFragment();
+            fragmentTransaction.add(R.id.fragment_container,fragment_3,"publish");
+        }
+        if(fragment_4==null)
+        {
+            fragment_4=new UserFragment();
+            fragmentTransaction.add(R.id.fragment_container,fragment_4,"user");
+        }
         switch (index){
             case 1:
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                if(fragment_1==null)
-                {
-                    fragment_1=new TaskFragment();
-                    fragmentTransaction.add(R.id.fragment_container,fragment_1,"task");
-                }
                 unselectAllTab();
                 tab_1_icon.setImageResource(R.drawable.task_selected);
                 tab_1_text.setTextColor(0xfff39c12);
@@ -91,16 +111,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 unselectAllTab();
                 tab_2_icon.setImageResource(R.drawable.secondhand_market_selected);
                 tab_2_text.setTextColor(0xfff39c12);
+                fragmentTransaction.show(fragment_2);
+                fragmentTransaction.commit();
                 break;
             case 3:
                 unselectAllTab();
                 tab_3_icon.setImageResource(R.drawable.publish_selected);
                 tab_3_text.setTextColor(0xfff39c12);
+                fragmentTransaction.show(fragment_3);
+                fragmentTransaction.commit();
                 break;
             case 4:
                 unselectAllTab();
                 tab_4_icon.setImageResource(R.drawable.user_selected);
                 tab_4_text.setTextColor(0xfff39c12);
+                fragmentTransaction.show(fragment_4);
+                fragmentTransaction.commit();
                 break;
                 default:break;
         }
@@ -116,6 +142,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tab_4_text.setTextColor(0xff515151);
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.hide(fragment_1);
+        fragmentTransaction.hide(fragment_2);
+        fragmentTransaction.hide(fragment_3);
+        fragmentTransaction.hide(fragment_4);
         fragmentTransaction.commit();
     }
 }

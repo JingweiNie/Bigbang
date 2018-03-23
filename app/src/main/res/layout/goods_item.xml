@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="384px">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!--商品图片-->
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/goods_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="8dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/goods_test" />
+    </LinearLayout>
+    <!--右侧详情区-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:layout_weight="1.77">
+
+        <!--商品描述-->
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/good_describe"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:padding="5dp"
+            android:text="出个桌子 很新 可以放下电脑和键盘"
+            android:textColor="#000"
+            android:textSize="18dp" />
+
+        <!--自定义关键词列表 共 5 个 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <!--关键词①-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/selfdef_1"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/selfLabelinterval"
+                android:background="@drawable/selfdefine_goods_label"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="桌子"
+                android:textColor="@color/dark_grey"
+                android:textSize="7dp" />
+            <!-- 关键词②-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/selfdef_2"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/selfLabelinterval"
+                android:background="@drawable/selfdefine_goods_label"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="九成新"
+                android:textColor="@color/dark_grey"
+                android:textSize="7dp" />
+            <!-- 关键词③-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/selfdef_3"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/selfLabelinterval"
+                android:background="@drawable/selfdefine_goods_label"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="方便"
+                android:textColor="@color/dark_grey"
+                android:textSize="7dp" />
+            <!-- 关键词④-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/selfdef_4"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/selfLabelinterval"
+                android:background="@drawable/selfdefine_goods_label"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="可床上用"
+                android:textColor="@color/dark_grey"
+                android:textSize="7dp" />
+            <!-- 关键词⑤-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/selfdef_5"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/selfLabelinterval"
+                android:background="@drawable/selfdefine_goods_label"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="坚固"
+                android:textColor="@color/dark_grey"
+                android:textSize="7dp" />
+        </LinearLayout>
+
+        <!--价格+系统关键词列表-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <!--人民币符号-->
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:text="￥"
+                android:textSize="12dp"
+                android:textColor="@color/red"
+                android:gravity="center_vertical|end"/>
+            <!--价格-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/goods_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="top|start"
+                android:paddingEnd="5dp"
+                android:text="60.00"
+                android:textColor="@color/red"
+                android:textSize="20dp" />
+            <!--系统标签①  共 4 个 -->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/syslabel_1"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/sysLabelinterval"
+                android:background="@drawable/goods_label"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="送货上门"
+                android:textColor="#fff"
+                android:textSize="7dp" />
+            <!--系统标签②-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/syslabel_2"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/sysLabelinterval"
+                android:background="@drawable/goods_label"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="抢手资源"
+                android:textColor="#fff"
+                android:textSize="7dp" />
+            <!--系统标签③-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/syslabel_3"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/sysLabelinterval"
+                android:background="@drawable/goods_label"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="多件优惠"
+                android:textColor="#fff"
+                android:textSize="7dp" />
+            <!--系统标签④-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/syslabel_4"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/sysLabelinterval"
+                android:background="@drawable/goods_label"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="数量有限"
+                android:textColor="#fff"
+                android:textSize="7dp" />
+        </LinearLayout>
+
+        <!--地址信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <!--地址-->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/goods_address"
+                android:gravity="center"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:text="外招一号楼"
+                android:textColor="@color/red"
+                android:textSize="7dp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divideline"/>
+    </LinearLayout>
+</LinearLayout>
