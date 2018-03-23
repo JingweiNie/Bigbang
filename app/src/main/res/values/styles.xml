@@ -13,4 +13,8 @@
         <item name="android:windowNoTitle">true</item> <!-- 无标题 -->
         <item name="android:windowContentOverlay">@null</item>
     </style>
+    <style name="userPanelTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/bold_divider</item>
+        <item name="colorPrimary"></item>
+    </style>
 </resources>

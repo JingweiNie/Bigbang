@@ -1,8 +1,10 @@
 package fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import com.example.niejingwei.bigbang.R;
  */
 public class UserFragment extends Fragment {
 
-
+    private View rootview;
     public UserFragment() {
         // Required empty public constructor
     }
@@ -24,7 +26,10 @@ public class UserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false);
+        Context context= new ContextThemeWrapper(getActivity(),R.style.userPanelTheme);
+        LayoutInflater layoutInflater=inflater.cloneInContext(context);
+        rootview=layoutInflater.inflate(R.layout.fragment_user, container, false);
+        return rootview;
     }
 
 }
