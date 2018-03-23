@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/publish_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d0000000">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/task_publish_imagebutton"
+        android:src="@drawable/callhelp"
+        android:background="@drawable/publish_callhelp_imagebutton_shape"
+        android:layout_gravity="bottom"
+        android:layout_margin="60dp"/>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/goods_publish_imagebutton"
+        android:src="@drawable/secondhand3"
+        android:background="@drawable/publish_goods_imagebutton_shape"
+        android:padding="0dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="60dp"/>
+</FrameLayout>

@@ -3,7 +3,7 @@ package com.example.niejingwei.bigbang;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Fragment fragment_2=null;
     private Fragment fragment_3=null;
     private Fragment fragment_4=null;
+    private static int curTabIndex=1;//指示当前的tab
     private FragmentManager fragmentManager=getFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +63,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.tab_1:
                 switchTab(1);
+                curTabIndex=1;
                 break;
             case R.id.tab_2:
                 switchTab(2);
+                curTabIndex=2;
                 break;
             case R.id.tab_3:
                 switchTab(3);
                 break;
             case R.id.tab_4:
                 switchTab(4);
+                curTabIndex=4;
                 break;
                 default:
                     break;
@@ -91,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(fragment_3==null)
         {
-            fragment_3=new PublishFragment();
-            fragmentTransaction.add(R.id.fragment_container,fragment_3,"publish");
+            //fragment_3=new PublishFragment();
+            //fragmentTransaction.add(R.id.fragment_container,fragment_3, "bigbang");
         }
         if(fragment_4==null)
         {
@@ -115,11 +119,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fragmentTransaction.commit();
                 break;
             case 3:
-                unselectAllTab();
+                unselectAllTabButton();
                 tab_3_icon.setImageResource(R.drawable.publish_selected);
                 tab_3_text.setTextColor(0xfff39c12);
-                fragmentTransaction.show(fragment_3);
-                fragmentTransaction.commit();
+                //fragmentTransaction.show(fragment_3);
+                //fragmentTransaction.commit();
+
+                Intent intent=new Intent(MainActivity.this,PublishActivity.class);
+                startActivityForResult(intent,0);
+                //startActivity(intent);
                 break;
             case 4:
                 unselectAllTab();
@@ -132,6 +140,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     private void unselectAllTab(){
+        unselectAllTabButton();
+        hideAllFragment();
+    }
+    private void unselectAllTabButton(){
         tab_1_icon.setImageResource(R.drawable.task_unselected);
         tab_2_icon.setImageResource(R.drawable.secondhand_market_unselected);
         tab_3_icon.setImageResource(R.drawable.publish_unselected);
@@ -140,11 +152,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tab_2_text.setTextColor(0xff515151);
         tab_3_text.setTextColor(0xff515151);
         tab_4_text.setTextColor(0xff515151);
+    }
+    private void hideAllFragment(){
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.hide(fragment_1);
         fragmentTransaction.hide(fragment_2);
-        fragmentTransaction.hide(fragment_3);
+        //fragmentTransaction.hide(fragment_3);
         fragmentTransaction.hide(fragment_4);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switchTab(curTabIndex);
     }
 }
