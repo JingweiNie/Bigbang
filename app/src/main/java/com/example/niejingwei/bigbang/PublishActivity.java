@@ -1,6 +1,7 @@
 package com.example.niejingwei.bigbang;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
@@ -39,6 +40,16 @@ public class PublishActivity extends Activity implements View.OnClickListener{
                 setResult(0);
                 finish();
                 overridePendingTransition(R.anim.enter,R.anim.out);
+                break;
+            case R.id.task_publish_imagebutton:
+                Intent intent_task=new Intent(this,TaskPublishActivity.class);
+                startActivity(intent_task);
+                finish();
+                break;
+            case R.id.goods_publish_imagebutton:
+                Intent intent_goods=new Intent(this,GoodsPublishActivity.class);
+                startActivity(intent_goods);
+                finish();
                 break;
                 default:break;
         }

@@ -6,6 +6,7 @@
     <color name="red">#f44336</color>
     <color name="dark_red">#e53935</color>
     <color name="grey">#EEEEEE</color>
+    <color name="black">#000</color>
     <color name="dark_grey">#757575</color>
     <color name="divideline">#9E9E9E</color>
     <color name="divide">#ADADAD</color>
@@ -18,4 +19,6 @@
     <color name="material_red">#e74c3c</color>
     <color name="material_yellow">#f39c12</color>
     <color name="material_green">#2ecc71</color>
+    <color name="uploadpicture_background">#F5F5F5</color>
+    <color name="uploadpicture_stroke">#BDBDBD</color>
 </resources>

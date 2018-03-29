@@ -1,14 +1,22 @@
 package fragments;
 
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.niejingwei.bigbang.R;
 
@@ -17,8 +25,10 @@ import java.util.List;
 
 import market.Goods;
 import market.GoodsAdapter;
+import market.OnItemClickListener;
 
 public class MarketFragment extends Fragment {
+    private Activity mActivity;
     private View rootview;
     private RecyclerView goodsList;
     private List<Goods> mGoods;
@@ -27,14 +37,74 @@ public class MarketFragment extends Fragment {
         // Inflate the layout for this fragment
         rootview=inflater.inflate(R.layout.fragment_market, container, false);
         goodsList=rootview.findViewById(R.id.goodsList);
-        RecyclerView recyclerView=rootview.findViewById(R.id.goodsList);
+        goodsList.setItemAnimator(new RecyclerView.ItemAnimator() {
+            @Override
+            public boolean animateDisappearance(@NonNull RecyclerView.ViewHolder viewHolder, @NonNull ItemHolderInfo preLayoutInfo, @Nullable ItemHolderInfo postLayoutInfo) {
+                ObjectAnimator objectAnimator=ObjectAnimator.ofFloat(viewHolder.itemView,"translationX",2000);
+                objectAnimator.setDuration(500);
+                objectAnimator.start();
+                return false;
+            }
+
+            @Override
+            public boolean animateAppearance(@NonNull RecyclerView.ViewHolder viewHolder, @Nullable ItemHolderInfo preLayoutInfo, @NonNull ItemHolderInfo postLayoutInfo) {
+                return false;
+            }
+
+            @Override
+            public boolean animatePersistence(@NonNull RecyclerView.ViewHolder viewHolder, @NonNull ItemHolderInfo preLayoutInfo, @NonNull ItemHolderInfo postLayoutInfo) {
+                return false;
+            }
+
+            @Override
+            public boolean animateChange(@NonNull RecyclerView.ViewHolder oldHolder, @NonNull RecyclerView.ViewHolder newHolder, @NonNull ItemHolderInfo preLayoutInfo, @NonNull ItemHolderInfo postLayoutInfo) {
+                return false;
+            }
+
+            @Override
+            public void runPendingAnimations() {
+
+            }
+
+            @Override
+            public void endAnimation(RecyclerView.ViewHolder item) {
+
+            }
+
+            @Override
+            public void endAnimations() {
+
+            }
+
+            @Override
+            public boolean isRunning() {
+                return false;
+            }
+        });
         initGoods();
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        GoodsAdapter goodsAdapter=new GoodsAdapter(mGoods);
-        recyclerView.setAdapter(goodsAdapter);
+        goodsList.setLayoutManager(linearLayoutManager);
+        final GoodsAdapter goodsAdapter=new GoodsAdapter(mGoods);
+        goodsAdapter.setOnItemClickListener(new OnItemClickListener() {//设置自己的recyclerview的点击事件监听器
+            @Override
+            public void onItemClickListener(View view, int position) {
+                Toast.makeText(getActivity(),"点击的是第"+position+"个",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onItemLongClickListener(View view, final int position) {
+                new AlertDialog.Builder(getActivity()).setPositiveButton("确认删除", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        goodsAdapter.removeItem(position);
+                    }
+                }).setNegativeButton("取消",null).setTitle("确认删除吗？").show();
+            }
+        });
+        goodsList.setAdapter(goodsAdapter);
         return rootview;
     }
+    //recycler数据的准备
     private void initGoods(){
         mGoods=new ArrayList<>();
         Goods goods=new Goods(R.drawable.goods_test,"计算机大三上学期硬件课程需要使用，有需要的学弟学妹吗？","68.00","学二十四","开发板","挥泪甩卖","九成新","","","实名认证","送货上门","数量有限","");

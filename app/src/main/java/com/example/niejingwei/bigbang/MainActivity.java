@@ -11,10 +11,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.gyf.barlibrary.ImmersionBar;
+
 import fragments.MarketFragment;
 import fragments.PublishFragment;
 import fragments.TaskFragment;
 import fragments.UserFragment;
+
+import static com.autonavi.ae.pos.LocManager.init;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private LinearLayout tab_1=null;
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImmersionBar.with(this).statusBarColor(R.color.red).fitsSystemWindows(true).init();
         tab_1=findViewById(R.id.tab_1);//找到tab的view
         tab_2=findViewById(R.id.tab_2);
         tab_3=findViewById(R.id.tab_3);

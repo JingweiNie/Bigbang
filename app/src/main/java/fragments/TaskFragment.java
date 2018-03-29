@@ -22,6 +22,7 @@ import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.example.niejingwei.bigbang.R;
@@ -62,7 +63,7 @@ public class TaskFragment extends Fragment {
         aMapLocationClient=new AMapLocationClient(getContext());
         aMapLocationClientOption=new AMapLocationClientOption();
         aMapLocationClientOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        aMapLocationClientOption.setInterval(3000);
+        aMapLocationClientOption.setInterval(20000);
         AMapLocationListener aMapLocationListener=new AMapLocationListener() {
             @Override
             public void onLocationChanged(AMapLocation aMapLocation) {
@@ -90,5 +91,9 @@ public class TaskFragment extends Fragment {
     private void flushMap(AMapLocation loc){
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLng(new LatLng(loc.getLatitude(),loc.getLongitude()));//先维度后经度
         aMap.moveCamera(cameraUpdate);
+        CameraUpdate cameraUpdate2= CameraUpdateFactory.zoomTo(16);//先维度后经度
+        aMap.moveCamera(cameraUpdate2);
+        CameraUpdate cameraUpdate3= CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(loc.getLatitude(),loc.getLongitude()),20,20,20));//先维度后经度
+        aMap.moveCamera(cameraUpdate3);
     }
 }

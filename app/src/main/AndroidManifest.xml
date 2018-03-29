@@ -41,12 +41,15 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="c8be54777f5913942aca0f8032f2c30c"></meta-data>
+            android:value="c8be54777f5913942aca0f8032f2c30c" />
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".PublishActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
-        </activity>
+        <activity
+            android:name=".PublishActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".GoodsPublishActivity" />
+        <activity android:name=".TaskPublishActivity"></activity>
     </application>
 
 </manifest>

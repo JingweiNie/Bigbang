@@ -3,11 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:fitsSystemWindows="true"
     tools:context="fragments.MarketFragment">
-        <android.support.v7.widget.RecyclerView
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scrollbars="none">
+                <android.support.design.widget.TabLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:tabMinWidth="80dp"
+                    app:tabIndicatorColor="@color/orange">
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="手机"/>
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="电脑"/>
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="相机"/>
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="女装"/>
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="女鞋"/>
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="箱包"/>
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="配饰"/>
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="家具"/>
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="家电"/>
+                        <android.support.design.widget.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="数码"/>
+
+                </android.support.design.widget.TabLayout>
+        </HorizontalScrollView>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:id="@+id/goodsList">
 
         </android.support.v7.widget.RecyclerView>

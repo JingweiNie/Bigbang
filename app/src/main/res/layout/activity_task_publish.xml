@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/taskPubilshTheme"
+    tools:context="com.example.niejingwei.bigbang.GoodsPublishActivity">
+    <!--发布根滑动布局-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:background="@color/bold_divider">
+        <!-- 发布根线性布局-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- 发布要求分区①-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- 商品标题-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="标题"
+                        android:textSize="16dp"
+                        android:padding="10dp"
+                        android:textColor="@color/black"/>
+
+                    <MultiAutoCompleteTextView
+                        android:id="@+id/multiAutoCompleteTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:background="@color/white"
+                        android:textColorHint="@color/red"
+                        android:hint="在这里输入" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+                <!-- 描述-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="描述"
+                        android:padding="10dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="50"
+                        android:textColorHint="@color/red"
+                        app:counterOverflowTextAppearance="@color/material_red"
+                        android:layout_weight="5">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:gravity="bottom"
+                            android:hint="最多输入50字"
+                            android:minLines="2"
+                            android:lines="3"
+                            />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px" />
+                <!-- 价格-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="价格"
+                        android:textSize="16dp"
+                        android:padding="10dp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:ems="10"
+                        android:text="20.0"
+                        android:background="@color/white"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <!-- 自定义标签-->
+                <!-- 系统标签-->
+                <!-- 地址-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="地址"
+                        android:textSize="16dp"
+                        android:padding="10dp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/address_publish_goods"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:ems="10"
+                        android:textColor="@color/black"
+                        android:text="外招一号楼"
+                        android:background="@color/white"
+                        android:inputType="text" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+                <!-- 图片-->
+            </LinearLayout>
+            <!--发布要求分区②-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- 系统标签-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="标题"
+                        android:textSize="16dp"
+                        android:padding="10dp"
+                        android:textColor="@color/black"/>
+
+                    <MultiAutoCompleteTextView
+                        android:id="@+id/multi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:background="@color/white"
+                        android:textColorHint="@color/red"
+                        android:hint="在这里输入" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+                <!-- 系统标签-->
+                <!-- 系统标签-->
+                <!-- 系统标签-->
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- 选择图片-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/uploadpicture_background">
+                        <ImageView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="5"
+                            android:src="@drawable/uploadpicture_red"
+                            android:padding="15dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="添加图片（可选）"
+                            android:layout_marginBottom="10dp"
+                            android:textSize="10dp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/dark_grey"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+                <!-- 系统标签-->
+                <!-- 系统标签-->
+                <!-- 系统标签-->
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发布"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:background="@color/red"/>
+</LinearLayout>

@@ -14,16 +14,16 @@ import java.util.List;
 /**
  * Created by niejingwei on 2018/3/23.
  */
-
 public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> {
     private List<Goods> mGoodsList;
+    private OnItemClickListener mOnItemClickListener;
 
     public GoodsAdapter(List<Goods> mGoodsList) {
         this.mGoodsList = mGoodsList;
     }
-
     static class ViewHolder extends RecyclerView.ViewHolder{
         AppCompatImageView goods_pic;
+        View rootview;
         TextView goods_describe;
         TextView price;
         TextView address;
@@ -38,6 +38,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
         TextView sysLabel_4;
         ViewHolder(View itemView) {
             super(itemView);
+            rootview=itemView;
             goods_pic=itemView.findViewById(R.id.goods_pic);
             goods_describe=itemView.findViewById(R.id.good_describe);
             price=itemView.findViewById(R.id.goods_price);
@@ -61,7 +62,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(GoodsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final GoodsAdapter.ViewHolder holder, final int position) {
         Goods goods=mGoodsList.get(position);
         holder.goods_pic.setImageResource(goods.getGoods_pic());
         holder.goods_describe.setText(goods.getGoods_describe());
@@ -122,8 +123,28 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder> 
         else {
             holder.sysLabel_4.setText(goods.getSysLabel_4());
         }
+        holder.rootview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mOnItemClickListener.onItemClickListener(holder.rootview,holder.getLayoutPosition());
+            }
+        });
+        holder.rootview.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mOnItemClickListener.onItemLongClickListener(holder.rootview,holder.getLayoutPosition());
+                return true;
+            }
+        });
     }
-
+    //为了实现自定义的监听接口，这是设置自定义监听器的监听器设置方法
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.mOnItemClickListener=onItemClickListener;
+    }
+    public void removeItem(int position){
+        mGoodsList.remove(position);
+        notifyItemRemoved(position);
+    }
     @Override
     public int getItemCount() {
         return mGoodsList.size();
