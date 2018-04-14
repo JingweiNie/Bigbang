@@ -58,12 +58,16 @@
 
                 </android.support.design.widget.TabLayout>
         </HorizontalScrollView>
-        <android.support.v7.widget.RecyclerView
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshgoodslist"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/goodsList">
+            android:layout_height="match_parent">
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/goodsList">
+                </android.support.v7.widget.RecyclerView>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-        </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

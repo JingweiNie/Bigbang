@@ -21,4 +21,10 @@
     <color name="material_green">#2ecc71</color>
     <color name="uploadpicture_background">#F5F5F5</color>
     <color name="uploadpicture_stroke">#BDBDBD</color>
+
+
+    <color name="google_red">#EA4335</color>
+    <color name="google_yellow">#FBBC05</color>
+    <color name="google_blue">#4285F4</color>
+    <color name="google_green">#34A853</color>
 </resources>

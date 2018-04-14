@@ -32,11 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
@@ -49,7 +45,14 @@
             android:name=".PublishActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".GoodsPublishActivity" />
-        <activity android:name=".TaskPublishActivity"></activity>
+        <activity android:name=".TaskPublishActivity" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -19,6 +19,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.niejingwei.bigbang.R;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshFooter;
+import com.scwang.smartrefresh.layout.api.RefreshHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.RefreshState;
+import com.scwang.smartrefresh.layout.listener.OnMultiPurposeListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +33,19 @@ import java.util.List;
 import market.Goods;
 import market.GoodsAdapter;
 import market.OnItemClickListener;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit_inteface.GoodsInfo;
 
 public class MarketFragment extends Fragment {
     private Activity mActivity;
     private View rootview;
     private RecyclerView goodsList;
     private List<Goods> mGoods;
+    private SmartRefreshLayout smartRefreshLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -104,8 +118,45 @@ public class MarketFragment extends Fragment {
         goodsList.setAdapter(goodsAdapter);
         return rootview;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        init();
+    }
+
+    //初始化
+    private void init(){
+        smartRefreshLayout=rootview.findViewById(R.id.refreshgoodslist);
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                smartRefreshLayout.finishRefresh(1000);
+            }
+        });
+    }
     //recycler数据的准备
     private void initGoods(){
+        Retrofit retrofit=new Retrofit.Builder()
+                .baseUrl("http://39.106.223.131:8080/bigbang/")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build();
+        GoodsInfo goodsInfo=retrofit.create(GoodsInfo.class);
+        Call<String> returndata=goodsInfo.getGoodsList("book");
+        returndata.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                String[] s=response.body().split("<br>");
+                String[] div=s[0].split("\\|");
+                StringBuilder t=new StringBuilder();
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
         mGoods=new ArrayList<>();
         Goods goods=new Goods(R.drawable.goods_test,"计算机大三上学期硬件课程需要使用，有需要的学弟学妹吗？","68.00","学二十四","开发板","挥泪甩卖","九成新","","","实名认证","送货上门","数量有限","");
         Goods goods2=new Goods(R.drawable.goods_test2,"计算机大三上学期硬件课程需要使用，有需要的学弟学妹吗？","498.00","外招一号楼","开发板","挥泪甩卖","九成新","","","实名认证","送货上门","数量有限","");
